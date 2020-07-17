@@ -1,4 +1,4 @@
-package br.ufsm.projetoIntegrador.model;
+package br.ufsm.projetoIntegrador.dto;
 
 public class AuthRequest {
     private String username;

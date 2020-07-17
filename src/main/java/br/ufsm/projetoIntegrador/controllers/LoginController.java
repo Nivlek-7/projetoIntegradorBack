@@ -1,14 +1,13 @@
 package br.ufsm.projetoIntegrador.controllers;
 
-import br.ufsm.projetoIntegrador.model.AuthRequest;
+import br.ufsm.projetoIntegrador.dto.AuthRequest;
 import br.ufsm.projetoIntegrador.model.Dono;
-import br.ufsm.projetoIntegrador.model.RetornoLogin;
+import br.ufsm.projetoIntegrador.dto.RetornoLogin;
 import br.ufsm.projetoIntegrador.repository.DonoRepository;
 import br.ufsm.projetoIntegrador.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

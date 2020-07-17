@@ -1,4 +1,4 @@
-package br.ufsm.projetoIntegrador.model;
+package br.ufsm.projetoIntegrador.dto;
 
 public class RetornoLogin {
     private Long id;
