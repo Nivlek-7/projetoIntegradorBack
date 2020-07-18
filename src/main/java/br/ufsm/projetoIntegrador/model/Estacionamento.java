@@ -1,18 +1,15 @@
 package br.ufsm.projetoIntegrador.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Getter
 @Setter
 @Entity
-
-public class Dono implements Serializable {
+public class Estacionamento implements Serializable {
     @Getter
     private static final long serialVersionUID = 1L;
 
@@ -26,12 +23,14 @@ public class Dono implements Serializable {
     private String endereco;
     @Column(nullable = false)
     private String telefone;
-    @Column(nullable = false, unique = true)
-    private String username;
     @Column(nullable = false)
-    private String senha;
+    private float valorPorHora;
+    @Column(nullable = false)
+    private int vagas;
+    @Column(nullable = false)
+    private int vagasDisponiveis;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL)
-    private List<Estacionamento> estacionamentos;
+    @ManyToOne
+    @JoinColumn(name = "dono_id", nullable = false)
+    private Dono dono;
 }
