@@ -1,10 +1,12 @@
 package br.ufsm.projetoIntegrador.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,4 +35,8 @@ public class Estacionamento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "dono_id", nullable = false)
     private Dono dono;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "estacionamento", cascade = CascadeType.ALL)
+    private List<Funcionario> funcionarios;
 }

@@ -65,10 +65,12 @@ public class EstacionamentoController {
         Dono dono = donoRepository.findByUsername(principal.getName());
         Optional<Estacionamento> e = estacionamentoRepository.findById(id);
 
-        if (e.get().getDono().getId().equals(dono.getId())) {
-            estacionamentoRepository.deleteById(id);
-        } else {
-            throw new AcessoNegadoException();
+        if (e.isPresent()){
+            if (e.get().getDono().getId().equals(dono.getId())) {
+                estacionamentoRepository.deleteById(id);
+            } else {
+                throw new AcessoNegadoException();
+            }
         }
     }
 
