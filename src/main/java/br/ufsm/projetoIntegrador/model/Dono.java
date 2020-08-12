@@ -11,7 +11,6 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-
 public class Dono implements Serializable {
     @Getter
     private static final long serialVersionUID = 1L;
@@ -34,4 +33,8 @@ public class Dono implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL)
     private List<Estacionamento> estacionamentos;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL)
+    private List<Cliente> clientes;
 }

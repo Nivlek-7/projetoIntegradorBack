@@ -22,6 +22,11 @@ public class FuncionarioController {
     @Autowired
     DonoRepository donoRepository;
 
+    @GetMapping(value = "/listar")
+    public Funcionario listaFuncionario(Principal principal){
+        return funcionarioRepository.findByUsername(principal.getName());
+    }
+
     @GetMapping
     public List<Funcionario> list(Principal principal){
         Dono dono = donoRepository.findByUsername(principal.getName());
