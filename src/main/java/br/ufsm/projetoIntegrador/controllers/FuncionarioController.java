@@ -64,12 +64,18 @@ public class FuncionarioController {
                 throw new AcessoNegadoException();
             }
         } else {
-            Funcionario func = funcionarioRepository.findByUsername(principal.getName());
-            if (func != null && func.getId().equals(funcionario.getId())) {
-                return funcionarioRepository.save(funcionario);
-            } else {
-                throw new AcessoNegadoException();
-            }
+            throw new AcessoNegadoException();
+        }
+    }
+
+    @PutMapping(value = "/update2")
+    public Funcionario update2(@RequestBody Funcionario funcionario, Principal principal){
+        Funcionario func = funcionarioRepository.findByUsername(principal.getName());
+
+        if (func != null && func.getId().equals(funcionario.getId())) {
+            return funcionarioRepository.save(funcionario);
+        } else {
+            throw new AcessoNegadoException();
         }
     }
 
