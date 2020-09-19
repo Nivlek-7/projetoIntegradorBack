@@ -39,4 +39,8 @@ public class Estacionamento implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "estacionamento", cascade = CascadeType.ALL)
     private List<Funcionario> funcionarios;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "estacionamento", cascade = CascadeType.ALL)
+    private List<Entrada> entradas;
 }

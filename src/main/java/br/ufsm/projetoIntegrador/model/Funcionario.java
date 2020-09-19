@@ -1,14 +1,17 @@
 package br.ufsm.projetoIntegrador.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class Funcionario {
+public class Funcionario implements Serializable {
     @Getter
     private static final long serialVersionUID = 1L;
 
@@ -32,4 +35,8 @@ public class Funcionario {
     @ManyToOne
     @JoinColumn(name = "estacionamento_id", nullable = false)
     private Estacionamento estacionamento;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
+    private List<Entrada> entradas;
 }
